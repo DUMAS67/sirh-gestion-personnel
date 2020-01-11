@@ -1,4 +1,3 @@
-
 <%@ page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -87,11 +86,26 @@
 			</div>
 		</div>
 		<div class="form-group row">
+			<div class="col-2"></div>
+			<label for="inputDepartement" class="col-sm-2 col-form-label">Departement</label>
+			<div class="col-sm-4">
+				<input name="departement" type="text" class="form-control"
+					id="inputNSS">
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-2"></div>
+			<label for="inputFonction" class="col-sm-2 col-form-label">Fonction</label>
+			<div class="col-sm-4">
+				<input name="fonction" type="text" class="form-control"
+					id="inputNSS">
+			</div>
+		</div>
+		<div class="form-group row">
 			<div class="col-sm-8 text-right">
 				<!-- Button trigger modal -->
 				<button type="submit" name="creer" class="btn btn-primary">Créer</button>
 			</div>
-		</div>
 		</div>
 	</form>
 	</main>

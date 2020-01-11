@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dev.sgp.entite.Collaborateur;
+import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
+import dev.sgp.service.DepartementService;
 import dev.sgp.util.Constantes;
 
 public class ListerCollaborateursController extends HttpServlet {
@@ -20,6 +22,8 @@ public class ListerCollaborateursController extends HttpServlet {
 	 */
 	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
 	List<Collaborateur> collaborateurs = collabService.listerCollaborateurs(); 
+	private DepartementService deptService=Constantes.DEPT_SERVICE;
+	List<Departement> departement = deptService.listerDepartement();
 
 	@Override
 	
@@ -29,8 +33,9 @@ public class ListerCollaborateursController extends HttpServlet {
 		 
 		
 		/* Affectation données pour la liste*/
-		
+		req.setAttribute("listeDepartement", deptService.listerDepartement());
 		req.setAttribute("listeCollaborateur", collabService.listerCollaborateurs()); 
+		
 		
 		/* Dispatch vers fichiers JSP*/
 		
