@@ -1,6 +1,6 @@
-<%@page import="dev.sgp.entite.Departement" %>
-<%@page import="dev.sgp.entite.Collaborateur"%>
 
+<%@page import="dev.sgp.entite.Collaborateur"%>
+<%@page import="dev.sgp.entite.Departement" %>
 <%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,8 +40,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-right">
-				<button type="button" onclick="window.location.href='creer.html';"
-					class="btn btn-primary">Ajouter un nouveau collaborateur</button>
+				<a href="../collaborateur/nouveau" class="btn btn-primary">Ajouter un nouveau collaborateur</a>
 			</div>
 		</div>
 		<div class="row">
@@ -77,6 +76,7 @@
 				<select class="custom-select my-1 mr-sm-2"
 					id="inlineFormCustomSelectPref">
 					<option selected>Tous</option>
+					<!--  récupère la liste des département et l'affiche -->
 					<%
 					List<Departement> lDep = (List<Departement>) request.getAttribute("listeDepartement");
 
@@ -95,6 +95,7 @@
 <!--Première ligne de Card-->
 <div class="container">
 	<div class="row">
+	<!--  récupère la liste des collaborateurs à afficcher -->
 		<%
 			List<Collaborateur> lCol = (List<Collaborateur>) request.getAttribute("listeCollaborateur");
 
@@ -103,8 +104,9 @@
 		<div class="col">
 			<p></p>
 			<div class="card" style="width: 21rem;">
-				<h5 class="card-header"><%=lC.getNom()%>
-					<%=lC.getPrenom()%></h5>
+			<!--  affiche les noms et prénoms -->
+				<h5 class="card-header"><%=lC.getNom()%> 
+					<%=lC.getPrenom()%> </h5>
 				<div class="card-body">
 					<div class="row">
 						<div class="col">
@@ -112,6 +114,7 @@
 								<img class="align-self-center mr-3" class="mr-2"
 									src="https://thafd.bing.com/th/id/OIP.OXyOULVOTF4gvyMjUfaptgHaE6?w=265&h=173&c=7&o=5&dpr=1.25&pid=1.7"
 									width="48" height="48" alt="">
+									<!--  affiche la fonction, le département et l'email du collaborateur-->
 								<ul style="list-style: none;" class="col">
 									<li class="#"><h6 class="#"><%=lC.getIntitulePoste()%></h6></li>
 									<li class="#"><h6 class="#"><%=lC.getDepartement().getNom()%></h6></li>
@@ -122,8 +125,9 @@
 					</div>
 					<div class="row">
 						<div class="col text-right">
-
-							<a href="editer.html" class="btn btn-primary">Editer</a>
+						<!-- redirige sur la page editer avec le numero de matricule seectionné-->
+							<a href="../collaborateur/editer?matricule=<%=lC.getMatricule()%>" class="btn btn-primary">Editer</a>
+						
 						</div>
 					</div>
 				</div>

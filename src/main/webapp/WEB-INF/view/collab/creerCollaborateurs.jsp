@@ -45,65 +45,65 @@
 	</div>
 	<form method="post">
 		<p></p>
-		<div class="form-group row">
+		<div class="form-row">
 			<div class="col-2"></div>
 			<label for="inputNom" class="col-sm-2 col-form-label">Nom</label>
 			<div class="col-sm-4">
-				<input name="nom" type="text" class="form-control" id="inputNom">
+				<input name="nom" type="text" class="form-control is-invalid" id="inputNom" required>
+				<div class="invalid-feedback">
+                        Le Nom est obligatoire
+                    </div>
 			</div>
 		</div>
-		<div class="form-group row">
+		<div class="form-row">
 			<div class="col-2"></div>
 			<label for="inputPrenom" class="col-sm-2 col-form-label">Prénom</label>
 			<div class="col-sm-4">
-				<input name="prenom" type="text" class="form-control"
-					id="inputPrenom">
+				<input name="prenom" type="text" class="form-control is-invalid"
+					id="inputPrenom" required>
+					<div class="invalid-feedback">
+                        Le Prénom est obligatoire
+                    </div>
 			</div>
 		</div>
-		<div class="form-group row">
+		<div class="form-row">
 			<div class="col-2"></div>
 			<label for="inputDateNaissance" class="col-sm-2 col-form-label">Date
 				de Naissance</label>
 			<div class="col-sm-4">
-				<input name="dateNaissance" type="date" class="form-control"
-					id="inputDateNaissance">
+				<input name="dateNaissance" type="date" class="form-control is-invalid"
+					id="inputDateNaissance"required>
+					<div class="invalid-feedback">
+                        La date de naissance est obligatoire
+                    </div>
 			</div>
 		</div>
-		<div class="form-group row">
+		<div class="form-row">
 			<div class="col-2"></div>
 			<label for="inputAdresse" class="col-sm-2 col-form-label">Adresse</label>
 			<div class="col-sm-4">
-				<textarea name="adresse" class="form-control" id="textarea" rows="3"></textarea>
+				<textarea name="adresse" class="form-control is-invalid" id="textarea" rows="3"></textarea>
+				<div class="invalid-feedback">
+                        L'adresse est obligatoire
+                    </div>
 			</div>
 		</div>
-		<div class="form-group row">
+		<div class="form-row">
 			<div class="col-2"></div>
 			<label for="inputNSS" class="col-sm-2 col-form-label">Numéro
 				de Sécurité Sociale</label>
 			<div class="col-sm-4">
-				<input name="numeroSS" type="number" class="form-control"
-					id="inputNSS">
+				<input name="numeroSS" type="number" class="form-control is-invalid"
+					id="inputNSS"required>
+					<div class="invalid-feedback">
+                        Le Numero de Sécurité Sociale est obligatoire
+                    </div>
 			</div>
 		</div>
-		<div class="form-group row">
-			<div class="col-2"></div>
-			<label for="inputDepartement" class="col-sm-2 col-form-label">Departement</label>
-			<div class="col-sm-4">
-				<input name="departement" type="text" class="form-control"
-					id="inputNSS">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-2"></div>
-			<label for="inputFonction" class="col-sm-2 col-form-label">Fonction</label>
-			<div class="col-sm-4">
-				<input name="fonction" type="text" class="form-control"
-					id="inputNSS">
-			</div>
-		</div>
+		
 		<div class="form-group row">
 			<div class="col-sm-8 text-right">
-				<!-- Button trigger modal -->
+				<!-- Button de Création d'un Collaborateur-->
 				<button type="submit" name="creer" class="btn btn-primary">Créer</button>
 			</div>
 		</div>

@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
@@ -22,16 +20,12 @@ public class CreerCollaborateurController extends HttpServlet {
 	List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
 	private DepartementService dpService = Constantes.DEPT_SERVICE;
 	List<Departement> listDep = dpService.listerDepartement();
-	
 
-	public final String COLLAB_COMPTABILITE = "Comptabilité";
-	public final String COLLAB_RH = "Ressources Humaines";
-	public final String COLLAB_INFORMATQUE = "Informatique";
-	public final String COLLAB_ADMINISTRATIF = "Administratif";	
-	
 	@Override
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		resp.setContentType("text/html; charset=UTF-8");
 
 		/* Dispatch vers fichiers JSP */
 
@@ -48,19 +42,8 @@ public class CreerCollaborateurController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		resp.setContentType("text/html; charset=UTF-8");
 
-		Departement dep0 = new Departement(0, COLLAB_ADMINISTRATIF);
-		Departement dep1 =new Departement(1, COLLAB_COMPTABILITE);
-		Departement dep2 =new Departement(2, COLLAB_INFORMATQUE);
-		Departement dep3 =new Departement(3, COLLAB_RH);
-		
-		if (listDep.isEmpty()) {
-		dpService.sauvegarderDepartement(dep0);
-		dpService.sauvegarderDepartement(dep1);
-		dpService.sauvegarderDepartement(dep2);
-		dpService.sauvegarderDepartement(dep3);
-		}
-		
 		// recupere la valeur d'un nom
 		String nom = req.getParameter("nom");
 		// recupere la valeur d'une date
@@ -70,10 +53,7 @@ public class CreerCollaborateurController extends HttpServlet {
 		String adresse = req.getParameter("adresse");
 		// recupere la valeur du numéro Sécurité Sociale
 		String numeroSS = req.getParameter("numeroSS");
-		// recupere la valeur de la fonction
-		String fonction = req.getParameter("fonction");
-		// recupere la valeur du Departement
-		String departement = req.getParameter("departement");
+	
 
 		Boolean param1 = true;
 		Boolean param2 = true;
@@ -81,7 +61,6 @@ public class CreerCollaborateurController extends HttpServlet {
 		Boolean param4 = true;
 		Boolean param5 = true;
 		Boolean param6 = true;
-		Boolean param7 = true;		
 
 		if ((nom == null) || ("".equals(nom.trim()))) {
 			param1 = false;
@@ -100,47 +79,31 @@ public class CreerCollaborateurController extends HttpServlet {
 		} else if (numeroSS.length() <= 15) {
 			param5 = true;
 		} else {
-			param5 = false;
-		}
-		if ((fonction == null) || ("".equals(fonction.trim()))) {
 			param6 = false;
 		}
-		
-		
-		int indice=0;
-		int i = collaborateurs.size()+1;
-		Boolean dpOk= true;
-		if (param1 & param2 & param3 & param4 & param5 & param6 &param7) {
+
+		int i = collaborateurs.size() + 1;
+
+		/* Création du Collaborateur avec valeur par défaut et valeur renseignée par le Client*/
+		if (param1 & param2 & param3 & param4 & param5 & param6) {
 			resp.setStatus(201);
 			String matricule = "M-" + i;
+			String civilite = "";
 			String emailPro = prenom + "." + nom + "@societe.com";
 			String photo = "actif";
+			String banque = "";
+			String iban = "";
+			String bic = "";
 			Boolean actif = true;
+			String numeroTel = "";
 			ZonedDateTime zTime = ZonedDateTime.now();
-			boolean boucle =true;
-			int j=0;
-			while (boucle && j<listDep.size()) {
-				if (departement.equals(listDep.get(j).getNom())) {
-					boucle=false;
-					dpOk=true;
-					indice=j;
-				} else { 
-					dpOk = false;
-				}
-				j++;
-			}
-			if (!dpOk) {
-				indice=listDep.size();
-				dpService.sauvegarderDepartement(new Departement(indice, departement));
-				} 
-			Departement departement1 =dpService.listerDepartement().get(indice);
-		
+			String fonction = "";
+			Departement departement = listDep.get(0);
 			LocalDate dateNaissanceLocal = LocalDate.parse(dateNaissance);
-			Collaborateur addCollab = new Collaborateur(matricule, nom, prenom, dateNaissanceLocal, adresse, numeroSS,
-					emailPro, photo, zTime, actif, fonction, departement1);
+			Collaborateur addCollab = new Collaborateur(matricule, civilite, nom, prenom, dateNaissanceLocal, adresse,
+					numeroSS, numeroTel, emailPro, photo, zTime, actif, fonction, departement, banque, bic, iban);
 			collabService.sauvegarderCollaborateur(addCollab);
 			resp.sendRedirect("/sgp/collaborateurs/lister");
-			
 		} else {
 			resp.setStatus(400);
 			req.getRequestDispatcher("/WEB-INF/view/collab/creerCollaborateurs.jsp").forward(req, resp);

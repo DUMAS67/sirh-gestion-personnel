@@ -21,26 +21,38 @@ public class ListerCollaborateursController extends HttpServlet {
 	 * HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
-	List<Collaborateur> collaborateurs = collabService.listerCollaborateurs(); 
-	private DepartementService deptService=Constantes.DEPT_SERVICE;
+	List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
+	private DepartementService deptService = Constantes.DEPT_SERVICE;
 	List<Departement> departement = deptService.listerDepartement();
 
 	@Override
-	
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		 
-		
-		/* Affectation données pour la liste*/
+
+		/* Affectation données pour la liste */
+		resp.setContentType("text/html; charset=UTF-8");
 		req.setAttribute("listeDepartement", deptService.listerDepartement());
-		req.setAttribute("listeCollaborateur", collabService.listerCollaborateurs()); 
+		req.setAttribute("listeCollaborateur", collabService.listerCollaborateurs());
+
 		
-		
-		/* Dispatch vers fichiers JSP*/
-		
-		req.getRequestDispatcher("/WEB-INF/view/collab/listerCollaborateurs.jsp") .forward(req, resp);
-		
+		/* Dispatch vers fichiers JSP */
+
+		req.getRequestDispatcher("/WEB-INF/view/collab/listerCollaborateurs.jsp").forward(req, resp);
 		
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.
+	 * HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		/* Dispatch vers fichiers JSP */
+
+		req.getRequestDispatcher("/WEB-INF/view/collab/EditerCollaborateur.jsp").forward(req, resp);
+	}
+
 }

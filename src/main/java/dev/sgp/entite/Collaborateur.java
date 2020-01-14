@@ -1,41 +1,52 @@
 package dev.sgp.entite;
-
+/* Classe qui définit les attributs d'un Collaborateur*/
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 public class Collaborateur {
 
 	private String matricule;
+	private String civilite;
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance;
 	private String adresse;
 	private String numeroDeSecuriteSociale;
+	private String numeroTelephone;
 	private String emailPro;
 	private String photo;
 	private ZonedDateTime dateHeureCreation;
 	private Boolean actif;
 	private String intitulePoste;
 	private Departement departement;
+	private String banque; 
+	private String bic;
+	private String iban;
 	
 	
 	
-	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateNaissance, String adresse,
-			String numeroDeSecuriteSociale, String emailPro, String photo, ZonedDateTime dateHeureCreation,
-			Boolean actif, String intitulePoste, Departement departement) {
+	public Collaborateur(String matricule, String civilite, String nom, String prenom, LocalDate dateNaissance,
+			String adresse, String numeroDeSecuriteSociale, String numeroTelephone, String emailPro, String photo,
+			ZonedDateTime dateHeureCreation, Boolean actif, String intitulePoste, Departement departement,
+			String banque, String bic, String iban) {
 		super();
 		this.matricule = matricule;
+		this.civilite = civilite;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 		this.adresse = adresse;
 		this.numeroDeSecuriteSociale = numeroDeSecuriteSociale;
+		this.numeroTelephone = numeroTelephone;
 		this.emailPro = emailPro;
 		this.photo = photo;
 		this.dateHeureCreation = dateHeureCreation;
 		this.actif = actif;
 		this.intitulePoste = intitulePoste;
 		this.departement = departement;
+		this.banque = banque;
+		this.bic = bic;
+		this.iban = iban;
 	}
 
 
@@ -54,6 +65,24 @@ public class Collaborateur {
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
+	}
+
+
+
+	/**
+	 * @return the civilite
+	 */
+	public String getCivilite() {
+		return civilite;
+	}
+
+
+
+	/**
+	 * @param civilite the civilite to set
+	 */
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
 	}
 
 
@@ -144,6 +173,24 @@ public class Collaborateur {
 	 */
 	public void setNumeroDeSecuriteSociale(String numeroDeSecuriteSociale) {
 		this.numeroDeSecuriteSociale = numeroDeSecuriteSociale;
+	}
+
+
+
+	/**
+	 * @return the numeroTelephone
+	 */
+	public String getNumeroTelephone() {
+		return numeroTelephone;
+	}
+
+
+
+	/**
+	 * @param numeroTelephone the numeroTelephone to set
+	 */
+	public void setNumeroTelephone(String numeroTelephone) {
+		this.numeroTelephone = numeroTelephone;
 	}
 
 
@@ -253,8 +300,61 @@ public class Collaborateur {
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
-	
+
+
+
+	/**
+	 * @return the banque
+	 */
+	public String getBanque() {
+		return banque;
+	}
+
+
+
+	/**
+	 * @param banque the banque to set
+	 */
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+
+
+	/**
+	 * @return the bic
+	 */
+	public String getBic() {
+		return bic;
+	}
+
+
+
+	/**
+	 * @param bic the bic to set
+	 */
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+
+
+	/**
+	 * @return the iban
+	 */
+	public String getIban() {
+		return iban;
+	}
+
+
+
+	/**
+	 * @param iban the iban to set
+	 */
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
 	
 	
 }
-

@@ -1,5 +1,6 @@
 package dev.sgp.entite;
 
+/* Classe qui définit les attibuts et les méthods relative à un Département*/
 public class Departement {
 
 	

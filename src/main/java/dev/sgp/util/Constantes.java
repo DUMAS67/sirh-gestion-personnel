@@ -8,5 +8,5 @@ public interface Constantes {
 	CollaborateurService COLLAB_SERVICE = new CollaborateurService();
 	DepartementService DEPT_SERVICE = new DepartementService();
 
-
+	
 }
